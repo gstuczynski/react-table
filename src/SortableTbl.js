@@ -86,7 +86,6 @@ class SortableTbl extends React.Component{
 			let index = parseInt(i);
 			let nCurr = this.state.pagers.curr;
 			let pagesCount = Math.ceil(this.state.data.length / index);
-			//console.log(this.state.pagers.curr, pagesCount, index);
 			if (this.state.pagers.curr >= pagesCount)
 				nCurr = pagesCount - 1;
 			this.setState(
@@ -108,7 +107,7 @@ class SortableTbl extends React.Component{
 						{ this.props.search && 
 							(
 								<div className="search-box">
-									Search: <input className="search" type="text" name="" value={this.state.filter} placeholder="Filter Result" onChange={this.filter} />
+									<input className="search" type="text" name="" value={this.state.filter} placeholder="Search" onChange={this.filter} />
 								</div>
 							)}
 						{

@@ -66,24 +66,14 @@ class SortableTblPager extends React.Component{
 				<div className="form-group">
 					<div className="pager col-sm-7 col-xs-12">
 						<input type="button" className="btn btn-warning" name="" disabled={prevDisableStyle} 
-							onClick={this.subPage} value="Prev" />
-						<select onChange={this.setCurrentPage} value={this.state.currPage} className="form-control page-select">
+							onClick={this.subPage} value="<" />
+						<div onClick={this.setCurrentPage} value={this.state.currPage} className="form-control page-select">
 							{
-								Array.from(new Array(this.props.totalPage), (x,i) => {return (<option key={i} value={i}>{i + 1}</option>);})
+								Array.from(new Array(this.props.totalPage), (x,i) => {return (<button key={i} value={i}>{i + 1}</button>);})
 							}		
-						</select>
+						</div>
 						<input type="button" className="btn btn-warning" name="" disabled={nextDisableStyle} 
-							onClick={this.addPagge} value="Next"/>
-						<label htmlFor="rowsPerPage" className="SortableTblLabel">, display </label>
-						<select id="rowsPerPage" onChange={this.setRowsPerPage} value={rowPerPage} className="form-control page-select">
-							{
-								[5, 10, 20 ,50, 'All'].map((item,id) => {return (<option key={id} value={item}>{item}</option>);})
-							}		
-						</select>
-						<label  className="SortableTblLabel">rows per page</label>
-					</div>
-					<div className="desc col-sm-5 col-xs-12">
-						<div>Page {this.state.currPage + 1} of totlas {this.props.totalPage}, totlas {this.props.totalsCount} rows</div>
+							onClick={this.addPagge} value=">"/>
 					</div>
 				</div>
 			);
