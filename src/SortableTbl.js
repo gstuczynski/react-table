@@ -1,5 +1,3 @@
-import "font-awesome-sass-loader";
-// import './SortableTbl.scss';
 
 import React from 'react';
 import {SortableTblPager} from './SortableTblPager';

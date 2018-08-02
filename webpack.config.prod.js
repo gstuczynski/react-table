@@ -7,6 +7,8 @@ let libraryName = 'react-sort-search-table';
 let outputFile = libraryName + '.js';
 let projectRoot = process.cwd();
 
+let extractCSS = new ExtractTextPlugin(`stylesheets/${libraryName}.css`);
+
 let config = {
 	entry: __dirname + '/src/SortableTbl.js',
 	devtool: 'source-map',
@@ -27,7 +29,10 @@ let config = {
 			},
 			{
 				test: /\.scss$/,
-				use: ExtractTextPlugin.extract('css-loader!sass-loader'),
+				use: extractCSS.extract({
+                    use: ['css-loader', 'sass-loader'],
+
+                }),
 				include: path.resolve('src')
 			},
 			{ test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/i, 
@@ -60,9 +65,7 @@ let config = {
         unsafeCache : true
     },
     plugins: [
-        new ExtractTextPlugin(
-            `stylesheets/${libraryName}.css`
-        ),
+        extractCSS
     ]
 };
 
